@@ -1,5 +1,3 @@
-version: "1.0"
-
 services:
   go-dev:
     build:
@@ -17,7 +15,7 @@ services:
       - GO111MODULE=on
       - CGO_ENABLED=0
       - GOPROXY=https://proxy.golang.org,direct
-      
+
   device-service:
     build:
       context: ./iotservice/device-service
