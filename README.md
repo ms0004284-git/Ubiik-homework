@@ -2,22 +2,22 @@
 ## File Description
 ```
 ├─ Dockerfile
-├─ README 1.md
+├─ REQUIREMENT.md
+├─ README.md
 ├─ docker-compose.yml
-├─ homework
-│  ├─ device-service
-│  │  ├─ Dockerfile
-│  │  ├─ db
-│  │  │  └─ db.go
-│  │  ├─ go.mod
-│  │  ├─ go.sum
-│  │  └─ main.go
-│  └─ message-gateway-service
-│     ├─ Dockerfile
-│     ├─ go.mod
-│     ├─ go.sum
-│     └─ main.go
-└─ testcase.txt
+└─ iotservice
+   ├─ device-service
+   │  ├─ Dockerfile
+   │  ├─ db
+   │  │  └─ db.go
+   │  ├─ go.mod
+   │  ├─ go.sum
+   │  └─ main.go
+   └─ message-gateway-service
+      ├─ Dockerfile
+      ├─ go.mod
+      ├─ go.sum
+      └─ main.go
 
 ```
 
