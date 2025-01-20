@@ -1,3 +1,4 @@
+# For development
 FROM golang:1.23
 
 WORKDIR /app
@@ -15,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN go install golang.org/x/tools/cmd/goimports@latest \
-    && go install github.com/go-delve/delve/cmd/dlv@latest \
+    && go install github.com/go-delve/delve/cmd/dlv@latest 
 
 EXPOSE 8083
 
