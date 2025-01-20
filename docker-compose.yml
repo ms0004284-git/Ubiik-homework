@@ -1,0 +1,65 @@
+version: "1.0"
+
+services:
+  # go-dev:
+  #   build:
+  #     context: ./iotservice/message-gateway-service
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - .:/app       
+  #   working_dir: /app 
+  #   ports:
+  #     - "8083:8083"  
+  #   stdin_open: true 
+  #   tty: true
+  #   environment:
+  #     - GO111MODULE=on
+  #     - CGO_ENABLED=0
+  #     - GOPROXY=https://proxy.golang.org,direct
+  # message-gateway:
+  #   image: message-gateway:latest
+  #   container_name: message-gateway
+  #   volumes:
+  #     - ./iotservice/message-gateway-service:/app       
+  #   working_dir: /app 
+  #   ports:
+  #     - "8081:8081"  
+  #   tty: true
+  #   environment:
+  #     - GO111MODULE=on
+  #     - CGO_ENABLED=0
+  #     - GOPROXY=https://proxy.golang.org,direct
+  device-service:
+    build:
+      context: ./iotservice/device-service
+      dockerfile: Dockerfile
+    container_name: device-service
+    restart: always
+    ports:
+      - "8080:8080"
+
+  message-gateway-service:
+    build:
+      context: ./iotservice/message-gateway-service
+      dockerfile: Dockerfile
+    container_name: message-gateway-service
+    ports:
+      - "8081:8081"
+
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: iot
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 0000
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+    driver: local
