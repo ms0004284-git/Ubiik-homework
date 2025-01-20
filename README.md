@@ -1,9 +1,10 @@
 
 ## File Description
 ```
+├─ .gitignore
 ├─ Dockerfile
-├─ REQUIREMENT.md
 ├─ README.md
+├─ REQUIREMENT.md
 ├─ docker-compose.yml
 └─ iotservice
    ├─ device-service
@@ -12,12 +13,24 @@
    │  │  └─ db.go
    │  ├─ go.mod
    │  ├─ go.sum
-   │  └─ main.go
+   │  ├─ handlers
+   │  │  ├─ handler.go
+   │  │  └─ handler_test.go
+   │  ├─ main.go
+   │  ├─ models
+   │  │  └─ models.go
+   │  └─ repositories
+   │     └─ repo.go
    └─ message-gateway-service
       ├─ Dockerfile
       ├─ go.mod
       ├─ go.sum
-      └─ main.go
+      ├─ handlers
+      │  ├─ handler.go
+      │  └─ handler_test.go
+      ├─ main.go
+      └─ models
+         └─ models.go
 
 ```
 
@@ -38,6 +51,12 @@ docker exec -it go-dev bash
 docker exec -it mysql bash
 mysql -u root -p
 USE iot
+```
+
+進入 device-service or message-gateway-service container 中進行 unit test
+```
+docker exec -it <service> bash // <service> is device-service or message-gateway-service.
+go test ./handlers 
 ```
 
 ## Features
