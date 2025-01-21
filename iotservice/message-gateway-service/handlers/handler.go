@@ -21,13 +21,13 @@ func bindMessageData(input interface{}, output interface{}) error {
 
 func buildReadingRequest(message models.Message, device models.Device, readData models.ReadingData, readReq *models.ReadingRequest) error {
 	if message.DeviceID == "" {
-		return errors.New("DeviceID is missing in the message")
+		return errors.New("DeviceID is missing")
 	}
 	if device.Username == "" {
-		return errors.New("Username is missing in the device")
+		return errors.New("Username is missing")
 	}
-	if readData.Reading <= 0 {
-		return errors.New("Reading value must be greater than 0")
+	if readData.Reading == nil {
+		return errors.New("Reading data is missing")
 	}
 
 	readReq.DeviceID = message.DeviceID
